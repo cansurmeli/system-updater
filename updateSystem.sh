@@ -9,52 +9,52 @@ updateSystem() {
 
 	# Homebrew
 	printStatusMessage "Updating Homebrew..."
-	brewUpdate=$(brew update)
+	executeUpdateCommand `brew update`
 	checkCommandStatus
 	printNewLine
 
 	printStatusMessage "Upgrading Homebrew..."
-	brew upgrade
+	executeUpdateCommand `brew upgrade`
 	checkCommandStatus
 	printNewLine
 
 	printStatusMessage "Cleaning up Homebrew..."
-	brew cleanup
+	executeUpdateCommand `brew cleanup`
 	checkCommandStatus
 	printNewLine
 
 	# macOS
 	printStatusMessage "Upgrading outdated App Store apps via mas..."
-	mas upgrade
+	executeUpdateCommand `mas upgrade`
 	checkCommandStatus
 	printNewLine
 
 	# PIP
 	printStatusMessage "Upgrading the PIP itself..."
-	sudo pip install --upgrade pip
+	executeUpdateCommand `sudo pip install --upgrade pip`
 	checkCommandStatus
 	printNewLine
 
 	printStatusMessage "Updating the installed packages..."
 	echo -e "\e[31mFULL DISCLOSURE: Due to PIP's nature, you might have to deal with environment errors.\033[0m"
-	sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
+	executeUpdateCommand `sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U`
 	checkCommandStatus
 	printNewLine
 
 	# RUBY
 	printStatusMessage "Updating Ruby itself..."
-	gem update --system
+	executeUpdateCommand `gem update --system`
 	checkCommandStatus
 	printNewLine
 
 	printStatusMessage "Updating the installed gems..."
 	echo -e "\e[31mFULL DISCLOSURE: It might(most probably will) take a while so take a break(you've been warned)!\033[0m"
-	gem update
+	executeUpdateCommand `gem update`
 	checkCommandStatus
 	printNewLine
 
 	printStatusMessage "Cleaning up the installed gems..."
-	gem cleanup
+	executeUpdateCommand `gem cleanup`
 	checkCommandStatus
 	printNewLine
 }
@@ -76,6 +76,10 @@ printNewLine() {
 
 printStatusMessage() {
 	echo -e "\e[34mSTATUS: $1\033[0m"
+}
+
+executeUpdateCommand() {
+	$1	
 }
 
 updateSystem
