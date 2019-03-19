@@ -9,54 +9,36 @@ updateSystem() {
 
 	# Homebrew
 	printStatusMessage "Updating Homebrew..."
-	executeUpdateCommand `brew update`
-	checkCommandStatus
-	printNewLine
+	executeUpdateCommand "brew update"
 
 	printStatusMessage "Upgrading Homebrew..."
-	executeUpdateCommand `brew upgrade`
-	checkCommandStatus
-	printNewLine
+	executeUpdateCommand "brew upgrade"
 
 	printStatusMessage "Cleaning up Homebrew..."
-	executeUpdateCommand `brew cleanup`
-	checkCommandStatus
-	printNewLine
+	executeUpdateCommand "brew cleanup"
 
 	# macOS
 	printStatusMessage "Upgrading outdated App Store apps via mas..."
-	executeUpdateCommand `mas upgrade`
-	checkCommandStatus
-	printNewLine
+	executeUpdateCommand "mas upgrade"
 
 	# PIP
 	printStatusMessage "Upgrading the PIP itself..."
-	executeUpdateCommand `sudo pip install --upgrade pip`
-	checkCommandStatus
-	printNewLine
+	executeUpdateCommand "sudo pip install --upgrade pip"
 
 	printStatusMessage "Updating the installed packages..."
 	echo -e "\e[31mFULL DISCLOSURE: Due to PIP's nature, you might have to deal with environment errors.\033[0m"
-	executeUpdateCommand `sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U`
-	checkCommandStatus
-	printNewLine
+	executeUpdateCommand "sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
 
 	# RUBY
 	printStatusMessage "Updating Ruby itself..."
-	executeUpdateCommand `gem update --system`
-	checkCommandStatus
-	printNewLine
+	executeUpdateCommand "gem update --system"
 
 	printStatusMessage "Updating the installed gems..."
 	echo -e "\e[31mFULL DISCLOSURE: It might(most probably will) take a while so take a break(you've been warned)!\033[0m"
-	executeUpdateCommand `gem update`
-	checkCommandStatus
-	printNewLine
+	executeUpdateCommand "gem update"
 
 	printStatusMessage "Cleaning up the installed gems..."
-	executeUpdateCommand `gem cleanup`
-	checkCommandStatus
-	printNewLine
+	executeUpdateCommand "gem cleanup"
 }
 
 checkCommandStatus() {
@@ -80,6 +62,8 @@ printStatusMessage() {
 
 executeUpdateCommand() {
 	$1	
+	checkCommandStatus
+	printNewLine
 }
 
 updateSystem
