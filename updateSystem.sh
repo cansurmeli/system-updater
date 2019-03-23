@@ -1,11 +1,15 @@
 updateSystem() {
-	# Grab sudo
-	printStatusMessage "Later on, while updating PIP, sudo privileges will be required. Grant it now so that you can leave these processes on their own."
-	sudo -v
+	sudoStatus=$(checkSudoPrivileges)
+
+	# Grab sudo if needed
+	if [ "$sudoStatus" != "has_sudo__pas_set" ]; then
+		printStatusMessage "Later on, while updating PIP, sudo privileges will be required. Grant it now so that you can leave these processes on their own."
+		printNewLine
+		sudo -v
+	fi
 
 	# Keep the sudo privileges alive until everything finishes
 	while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-	printNewLine
 
 	# Homebrew
 	printStatusMessage "Updating Homebrew..."
@@ -64,6 +68,21 @@ executeUpdateCommand() {
 	$1	
 	checkCommandStatus
 	printNewLine
+}
+
+#https://superuser.com/questions/553932/how-to-check-if-i-have-sudo-access
+checkSudoPrivileges() {
+	local prompt
+
+	prompt=$(sudo -nv 2>&1)
+
+	if [ $? -eq 0 ]; then
+		echo "has_sudo__pass_set"
+	elif echo $prompt | grep -q '^sudo:'; then
+		echo "has_sudo__needs_pass"
+	else
+		echo "no_sudo"
+	fi
 }
 
 updateSystem
