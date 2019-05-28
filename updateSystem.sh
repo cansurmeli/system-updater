@@ -30,7 +30,7 @@ updateSystem() {
 	executeUpdateCommand "sudo pip install --upgrade pip"
 
 	printStatusMessage "Updating the installed packages..."
-	echo -e "\e[31mFULL DISCLOSURE: Due to PIP's nature, you might have to deal with environment errors.\033[0m"
+	printWarningMessage "FULL DISCLOSURE: Due to PIP's nature, you might have to deal with environment errors."
 	executeUpdateCommand "sudo pip list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U"
 
 	# RUBY
@@ -38,7 +38,7 @@ updateSystem() {
 	executeUpdateCommand "gem update --system"
 
 	printStatusMessage "Updating the installed gems..."
-	echo -e "\e[31mFULL DISCLOSURE: It might(most probably will) take a while so take a break(you've been warned)!\033[0m"
+	printWarningMessage "FULL DISCLOSURE: It might(most probably will) take a while so take a break(you've been warned)!"
 	executeUpdateCommand "gem update"
 
 	printStatusMessage "Cleaning up the installed gems..."
@@ -50,9 +50,9 @@ checkCommandStatus() {
 
 	if [ "$status" -eq "0" ];
 	then
-		echo -e "\e[34mDONE\033[0m"
+		printStatusMessage "DONE"
 	else
-		echo -e "\e[34mFAILED\033[0m"
+		printWarningMessage "FAILED"
 	fi
 }
 
@@ -61,7 +61,17 @@ printNewLine() {
 }
 
 printStatusMessage() {
-	echo -e "\e[34mSTATUS: $1\033[0m"
+	BLUE='\033[0;34m'
+	NO_COLOR='\033[0m'
+	printf "${BLUE}$1${NO_COLOR}"
+	printNewLine
+}
+
+printWarningMessage() {
+	RED='\033[0;31m'
+	NO_COLOR='\033[0m'
+	printf "${RED}$1${NO_COLOR}"
+	printNewLine
 }
 
 executeUpdateCommand() {
@@ -70,7 +80,7 @@ executeUpdateCommand() {
 	printNewLine
 }
 
-#https://superuser.com/questions/553932/how-to-check-if-i-have-sudo-access
+# https://superuser.com/questions/553932/how-to-check-if-i-have-sudo-access
 checkSudoPrivileges() {
 	local prompt
 
