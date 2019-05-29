@@ -105,7 +105,7 @@ parseCommandLineArguments() {
 
 	case $key in
 			-h|--help)
-			echo "Displaying the help manual"
+			less "help.txt"
 			shift # past argument
 			shift # past value
 			;;
