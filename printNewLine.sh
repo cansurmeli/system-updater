@@ -1,0 +1,3 @@
+printNewLine() {
+	echo ""
+}
