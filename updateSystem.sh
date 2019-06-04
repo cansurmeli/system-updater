@@ -1,3 +1,6 @@
+source printNewLine.sh
+source printStatusMessage.sh
+source printWarningMessage.sh
 source checkCommandStatus.sh
 source checkSudoPrivileges.sh
 source executeUpdateCommand.sh
@@ -8,9 +11,6 @@ source handlePIP.sh
 source handleRuby.sh
 source keepSudoPrivileges.sh
 source parseCommandLineArguments.sh
-source printNewLine.sh
-source printStatusMessage.sh
-source printWarningMessage.sh
 source updateSystem.sh
 
 initiateSystemUpdate() {
