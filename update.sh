@@ -1,3 +1,5 @@
+#!/bin/bash
+
 source printNewLine.sh
 source printStatusMessage.sh
 source printWarningMessage.sh
