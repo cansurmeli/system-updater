@@ -16,7 +16,7 @@ source parseCommandLineArguments.sh
 
 initiateSystemUpdate() {
 	parseCommandLineArguments
-	sudoStatus=$(checkSudoPrivileges)
+	checkSudoPrivileges
 	grabSudoIfNeeded
 	keepSudoPrivileges
 	handleHomebrew

@@ -33,5 +33,5 @@ parseCommandLineArguments() {
 	done
 	set -- "${POSITIONAL[@]}"					# restore positional parameters
 
-	echo LOG_OUTPUT_LOCATION = "${LOG_OUTPUT_LOCATION}"
+	#echo LOG_OUTPUT_LOCATION = "${LOG_OUTPUT_LOCATION}"
 }

@@ -1,2 +1,4 @@
-printStatusMessage "Upgrading outdated App Store apps via mas..."
-executeUpdateCommand "mas upgrade"
+handleMacOS() {
+	printStatusMessage "Upgrading outdated App Store apps via mas..."
+	executeUpdateCommand "mas upgrade"
+}
