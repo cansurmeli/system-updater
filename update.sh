@@ -13,6 +13,7 @@ source handlePIP.sh
 source handleRuby.sh
 source keepSudoPrivileges.sh
 source parseCommandLineArguments.sh
+source trapping.sh
 
 initiateSystemUpdate() {
 	parseCommandLineArguments
