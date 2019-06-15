@@ -1,6 +1,6 @@
 handlePIP() {
 	printStatusMessage "Upgrading the PIP itself..."
-	executeUpdateCommand "sudo pip install --upgrade pip"
+	executeUpdateCommand "pip install -U pip"
 
 	printStatusMessage "Updating the installed packages..."
 	printWarningMessage "FULL DISCLOSURE: Due to PIP's nature, you might have to deal with environment errors."
