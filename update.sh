@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ARGUMENTS=$@
+
 source printNewLine.sh
 source printStatusMessage.sh
 source printWarningMessage.sh
@@ -16,7 +18,7 @@ source parseCommandLineArguments.sh
 source trapping.sh
 
 initiateSystemUpdate() {
-	parseCommandLineArguments
+	parseCommandLineArguments "$ARGUMENTS"
 	checkSudoPrivileges
 	grabSudoIfNeeded
 	keepSudoPrivileges

@@ -1,4 +1,5 @@
 parseCommandLineArguments() {
+	echo $1
 	POSITIONAL=()
 	while [[ $# -gt 0 ]]
 	do
@@ -8,8 +9,8 @@ parseCommandLineArguments() {
 				-h|--help)
 				HELP="$2"
 				less "help.txt"
+				exit 0											# as expected, display the help and exit
 				shift												# past argument
-				shift												# past value
 				;;
 				-o|--output)
 				LOG_OUTPUT_LOCATION="$2"
@@ -17,9 +18,8 @@ parseCommandLineArguments() {
 				shift												# past value
 				;;
 				-v|--verbose)
-				echo "Acting verbose..."
+				isVerbose=true
 				shift												# past argument
-				shift												# past value
 				;;
 				--default)
 				DEFAULT=YES
@@ -32,6 +32,4 @@ parseCommandLineArguments() {
 		esac
 	done
 	set -- "${POSITIONAL[@]}"					# restore positional parameters
-
-	#echo LOG_OUTPUT_LOCATION = "${LOG_OUTPUT_LOCATION}"
 }
