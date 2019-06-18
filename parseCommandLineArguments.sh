@@ -1,5 +1,4 @@
 parseCommandLineArguments() {
-	echo $1
 	POSITIONAL=()
 	while [[ $# -gt 0 ]]
 	do
