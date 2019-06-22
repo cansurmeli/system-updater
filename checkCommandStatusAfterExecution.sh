@@ -5,6 +5,6 @@ checkCommandStatusAfterExecution() {
 	then
 		printStatusMessage "DONE"
 	else
-		printWarningMessage "FAILED"
+		printErrorMessage "FAILED"
 	fi
 }

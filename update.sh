@@ -3,6 +3,7 @@
 ARGUMENTS=$@
 
 source printNewLine.sh
+source printErrorMessage.sh
 source printStatusMessage.sh
 source printWarningMessage.sh
 source checkCommandAvailability.sh
