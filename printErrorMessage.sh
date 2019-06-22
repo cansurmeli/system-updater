@@ -1,6 +1,9 @@
 printErrorMessage() {
+	BOLD='\033[1m'
+	BOLD_RESET='\033[21m'
+	UNDERLINE='\033[4m'
+	UNDERLINE_RESET='\033[24m'
 	RED='\033[0;31m'
-	NO_COLOR='\033[0m'
-	printf "${RED}$1${NO_COLOR}"
+	printf "${RED}${BOLD}${UNDERLINE}WARNING${UNDERLINE_RESET}:${BOLD_RESET}${RED} $1${RESET}"
 	printNewLine
 }

@@ -1,6 +1,9 @@
 printStatusMessage() {
+	BOLD='\033[1m'
+	BOLD_RESET='\033[21m'
+	UNDERLINE='\033[4m'
+	UNDERLINE_RESET='\033[24m'
 	BLUE='\033[0;34m'
-	NO_COLOR='\033[0m'
-	printf "${BLUE}$1${NO_COLOR}"
+	printf "${BLUE}${BOLD}${UNDERLINE}WARNING${UNDERLINE_RESET}:${BOLD_RESET}${BLUE} $1${RESET}"
 	printNewLine
 }

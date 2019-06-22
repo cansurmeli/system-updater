@@ -1,6 +1,9 @@
 printWarningMessage() {
-	ORANGE='\033[0;33m'
-	NO_COLOR='\033[0m'
-	printf "${ORANGE}$1${NO_COLOR}"
+	BOLD='\033[1m'
+	BOLD_RESET='\033[21m'
+	UNDERLINE='\033[4m'
+	UNDERLINE_RESET='\033[24m'
+	YELLOW='\033[0;33m'
+	printf "${YELLOW}${BOLD}${UNDERLINE}WARNING${UNDERLINE_RESET}:${BOLD_RESET}${YELLOW} $1${RESET}"
 	printNewLine
 }
