@@ -1,11 +1,14 @@
 handleMacOS() {
-	isCommandAvailable=$(checkCommandAvailability "mas")
+	isCommandAvailable=$(checkCommandAvailability "softwareupdate")
 
 	if [ "$isCommandAvailable" -eq "1" ];
 	then
-		printStatusMessage "Upgrading outdated App Store apps via mas..."
-		executeUpdateCommand "mas upgrade"
+		printStatusMessage "Checking macOS updates..."
+		executeUpdateComman "softwareupdate -l"
+
+		printStatusMessage "Installing macOS updates..."
+		executeUpdateComman "softwareupdate -ia"
 	else
-		printWarningMessage "Command `mas` is not available. Hence, updating your App Store apps could not be carried on."
+		printWarningMessage "Command `softwareupdate` is not available. Hence, updating your macOS system itself could not be carried on."
 	fi
 }
