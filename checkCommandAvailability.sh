@@ -1,3 +1,8 @@
 checkCommandAvailability() {
-	command -v $1 >/dev/null 2>&1 || { echo >&2 "I require foo but it's not installed.  Aborting."; exit 1; }
+	if hash $1 2>/dev/null;
+	then
+		echo 1;
+	else
+		echo 0;
+	fi
 }

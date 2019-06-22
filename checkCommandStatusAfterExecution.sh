@@ -1,4 +1,4 @@
-checkCommandStatus() {
+checkCommandStatusAfterExecution() {
 	status=$?
 
 	if [ "$status" -eq "0" ];

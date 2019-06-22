@@ -5,7 +5,8 @@ ARGUMENTS=$@
 source printNewLine.sh
 source printStatusMessage.sh
 source printWarningMessage.sh
-source checkCommandStatus.sh
+source checkCommandAvailability.sh
+source checkCommandStatusAfterExecution.sh
 source checkSudoPrivileges.sh
 source executeUpdateCommand.sh
 source grabSudoIfNeeded.sh
