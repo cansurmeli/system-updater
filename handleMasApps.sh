@@ -1,4 +1,4 @@
-handleMacOS() {
+handleMasApps() {
 	isCommandAvailable=$(checkCommandAvailability "mas")
 
 	if [ "$isCommandAvailable" -eq "1" ];
