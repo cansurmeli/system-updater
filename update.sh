@@ -13,6 +13,7 @@ source executeUpdateCommand.sh
 source grabSudoIfNeeded.sh
 source handleHomebrew.sh
 source handleMacOS.sh
+source handleMasApps.sh
 source handlePIP.sh
 source handleRuby.sh
 source keepSudoPrivileges.sh
@@ -26,6 +27,7 @@ initiateSystemUpdate() {
 	keepSudoPrivileges
 	handleHomebrew
 	handleMacOS
+	handleMasApps
 	handlePIP
 	handleRuby
 }
