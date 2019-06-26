@@ -73,3 +73,8 @@ Just update `Ruby` & `PIP`:
 Be verbose and show what's going on while updating:
 
 	update -v
+
+## Known Issues
+
+- Updating the Python packages is throwing an error,
+- Updating the Ruby gems is still problematic even if sudo is granted,
