@@ -17,6 +17,15 @@ Hence, this script was created. So that people can properly update their macOS i
 
 It goes through major things that can be on a macOS installation and updates them properly/throughly.
 
+## Why `sudo` is requested
+
+This script asks for your `sudo` password!
+
+Full disclosure:
+
+- the script itself doesn't require sudo itself but the Python and Ruby stuff makes use of it,
+- the script doesn't messes around with your sudo password; feel free to check the source code.
+
 ## What's Updated
 
 - Homebrew
