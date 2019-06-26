@@ -74,6 +74,13 @@ Be verbose and show what's going on while updating:
 
 	update -v
 
+## To Be Implemented
+
+- [ ] Allow carry on without providing sudo and hence ask it later,
+- [ ] Implement logging,
+- [ ] Implement verbose operation,
+- [ ] Implement the usage cases of the command line argument.
+
 ## Known Issues
 
 - Updating the Python packages is throwing an error,
