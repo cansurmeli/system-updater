@@ -13,6 +13,6 @@ handleRuby() {
 		printStatusMessage "Cleaning up the installed gems..."
 		executeUpdateCommand "sudo gem cleanup"
 	else
-		printWarningMessage "Command `gem` is not available. Hence, updating Ruby could not be carried on."
+		printWarningMessage "Command 'gem' is not available. Hence, updating Ruby could not be carried on."
 	fi
 }
