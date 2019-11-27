@@ -22,14 +22,14 @@ source .trapping.sh
 
 initiateSystemUpdate() {
 	parseCommandLineArguments "$ARGUMENTS"
-	checkSudoPrivileges
-	grabSudoIfNeeded
+	#checkSudoPrivileges
+	#grabSudoIfNeeded
 	keepSudoPrivileges
 	handleHomebrew
 	handleMacOS
 	handleMasApps
 	handlePIP
-	handleRuby
+	#handleRuby
 }
 
 initiateSystemUpdate
